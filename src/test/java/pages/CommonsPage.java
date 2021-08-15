@@ -18,7 +18,7 @@ public class CommonsPage {
         this.wait = wait;
     }
 
-    public void aceptAllCokies() {
+    public void acceptAllCookies() {
         wait.until(ExpectedConditions.presenceOfElementLocated(buttonId));
         driver.findElement(buttonId).click();
     }

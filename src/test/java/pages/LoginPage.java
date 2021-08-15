@@ -11,9 +11,9 @@ public class LoginPage {
 
     private WebDriverWait wait;
 
-    private By usernameLocator = By.cssSelector ("input[data-test-id=SignIn-Username]");
+    private By usernameLocator = By.cssSelector("input[data-test-id=SignIn-Username]");
 
-    private By passwordLocator = By.cssSelector ("input[data-test-id=SignIn-Password]");
+    private By passwordLocator = By.cssSelector("input[data-test-id=SignIn-Password]");
 
     private By submitButtonLocator = By.cssSelector ("button[data-test-id=SignIn-Submit]");
 
