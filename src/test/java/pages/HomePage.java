@@ -39,6 +39,8 @@ public class HomePage {
     public int searchResults() {
         wait.until(ExpectedConditions.presenceOfElementLocated(searchResultsLocator));
         WebElement searchResults = driver.findElement(searchResultsLocator);
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.sresult")));
         return searchResults.findElements(By.tagName("div")).size();
     }
 }

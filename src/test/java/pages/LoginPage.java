@@ -28,8 +28,8 @@ public class LoginPage {
         driver.findElement(usernameLocator).sendKeys(username);
     }
 
-    public void setPassword() {
-        driver.findElement(passwordLocator).sendKeys("#_Automation75_#");
+    public void setPassword(String password) {
+        driver.findElement(passwordLocator).sendKeys(password);
     }
 
     public void clickSubmitButton() {

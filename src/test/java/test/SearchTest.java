@@ -1,13 +1,14 @@
 package test;
 
 import automation.WebDriverHelper;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CommonsPage;
 import pages.HomePage;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchTest {
 
@@ -26,11 +27,13 @@ public class SearchTest {
         driver.get("https://www.mulesoft.com/");
 
         CommonsPage commonsPage = new CommonsPage(driver, webDriverWait);
-        commonsPage.aceptAllCokies();
+        commonsPage.acceptAllCookies();
 
         HomePage homePage = new HomePage(driver, webDriverWait);
         homePage.clickSearchButton();
 
         homePage.searchValue("api");
+
+        assertThat(homePage.searchResults()).isGreaterThan(0);
     }
 }
