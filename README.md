@@ -37,11 +37,11 @@ Usage of testing design patterns will be evaluated and considered.
 
 Send the project vía Github or Zip file through an email to the recruiter assigned.
 
-Functionalities 
+Functionality 
 - [x] Login.
 - [ ] Homepage.
-- [ ] Search.
+- [x] Search.
    - [x] api.
-   - [ ] trial.
+   - [x] trial.
 - [ ] Product download.
 - [ ] Report.

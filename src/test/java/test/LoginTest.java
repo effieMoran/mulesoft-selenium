@@ -27,6 +27,7 @@ public class LoginTest {
         loginPage.navigate();
         commonsPage.acceptAllCookies();
     }
+
     @Test
     public void login() {
 
