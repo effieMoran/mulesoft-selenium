@@ -12,13 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchTest {
 
-    private WebDriver driver;
-
-    private WebDriverWait webDriverWait;
-
     private HomePage homePage;
-
-    private CommonsPage commonsPage;
 
     private static final String API = "api";
 
@@ -26,11 +20,11 @@ public class SearchTest {
 
     @Before
     public void beforeTest() {
-        driver = new WebDriverHelper().generateWebDriver();
-        webDriverWait = new WebDriverWait(driver, 10);
+        WebDriver driver = new WebDriverHelper().generateWebDriver();
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
 
         homePage = new HomePage(driver, webDriverWait);
-        commonsPage = new CommonsPage(driver, webDriverWait);
+        CommonsPage commonsPage = new CommonsPage(driver, webDriverWait);
         homePage.navigate();
         commonsPage.acceptAllCookies();
     }

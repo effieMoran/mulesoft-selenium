@@ -17,9 +17,13 @@ public class HomePage {
 
     private By searchInputLocator = By.cssSelector ("input[placeholder=Search]");
 
-    private By searchTitle = By.id("component-banner-7416");
+    private By searchResultsTableLocator = By.id("search-results");
 
-    private By searchResultsLocator = By.id("search-results");
+    private By searchResultLocator = By.cssSelector("div.sresult");
+
+    private By searchResultsPaginatedLocator = By.tagName("div");
+
+    private final static String HOME_PAGE_URL = "https://www.mulesoft.com/";
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -27,7 +31,7 @@ public class HomePage {
     }
 
     public void navigate() {
-        driver.get("https://www.mulesoft.com/");
+        driver.get(HOME_PAGE_URL);
     }
 
     public void clickSearchButton() {
@@ -41,10 +45,10 @@ public class HomePage {
     }
 
     public int searchResults() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(searchResultsLocator));
-        WebElement searchResults = driver.findElement(searchResultsLocator);
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchResultsTableLocator));
+        WebElement searchResults = driver.findElement(searchResultsTableLocator);
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.sresult")));
-        return searchResults.findElements(By.tagName("div")).size();
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchResultLocator));
+        return searchResults.findElements(searchResultsPaginatedLocator).size();
     }
 }

@@ -13,29 +13,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LoginTest {
 
-    private WebDriver driver;
+    private LoginPage loginPage;
 
-    private WebDriverWait webDriverWait;
+    private static final String ANYPOINT_PLATFORM = "Anypoint Platform";
 
     @Before
     public void beforeTest() {
-        driver = new WebDriverHelper().generateWebDriver();
-        webDriverWait = new WebDriverWait(driver, 10);
-    }
+        WebDriver driver = new WebDriverHelper().generateWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
 
+        loginPage = new LoginPage(driver, wait);
+        CommonsPage commonsPage = new CommonsPage(driver, wait);
+        loginPage.navigate();
+        commonsPage.acceptAllCookies();
+    }
     @Test
     public void login() {
 
-        driver.get("https://anypoint.mulesoft.com/login/");
-
-        CommonsPage commonsPage = new CommonsPage(driver, webDriverWait);
-        commonsPage.acceptAllCookies();
-
-        LoginPage loginPage = new LoginPage(driver,webDriverWait);
         loginPage.setUsername(ConfigurationValues.username);
         loginPage.setPassword(ConfigurationValues.password);
         loginPage.clickSubmitButton();
 
-        assertThat(loginPage.getTitleText()).isEqualTo("Anypoint Platform");
+        assertThat(loginPage.getTitleText()).isEqualTo(ANYPOINT_PLATFORM);
     }
 }

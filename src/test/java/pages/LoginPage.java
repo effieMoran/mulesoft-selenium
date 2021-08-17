@@ -19,11 +19,16 @@ public class LoginPage {
 
     private By titleLocator = By.cssSelector("div[data-test-id=navbar-page-name]");
 
+    private static final String ANYPOINT_LOGIN_URL = "https://anypoint.mulesoft.com/login/";
+
     public LoginPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
     }
 
+    public void navigate() {
+        driver.get(ANYPOINT_LOGIN_URL);
+    }
 
     public void setUsername(String username) {
         driver.findElement(usernameLocator).sendKeys(username);
