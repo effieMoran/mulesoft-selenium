@@ -16,24 +16,36 @@ public class SearchTest {
 
     private WebDriverWait webDriverWait;
 
+    private HomePage homePage;
+
+    private CommonsPage commonsPage;
+
+    private static final String API = "api";
+
+    private static final String TRIAL = "trial";
+
     @Before
     public void beforeTest() {
         driver = new WebDriverHelper().generateWebDriver();
         webDriverWait = new WebDriverWait(driver, 10);
+
+        homePage = new HomePage(driver, webDriverWait);
+        commonsPage = new CommonsPage(driver, webDriverWait);
+        homePage.navigate();
+        commonsPage.acceptAllCookies();
     }
 
     @Test
     public void searchApiTest() {
-        driver.get("https://www.mulesoft.com/");
-
-        CommonsPage commonsPage = new CommonsPage(driver, webDriverWait);
-        commonsPage.acceptAllCookies();
-
-        HomePage homePage = new HomePage(driver, webDriverWait);
         homePage.clickSearchButton();
+        homePage.searchValue(API);
+        assertThat(homePage.searchResults()).isGreaterThan(0);
+    }
 
-        homePage.searchValue("api");
-
+    @Test
+    public void searchTrialTest() {
+        homePage.clickSearchButton();
+        homePage.searchValue(TRIAL);
         assertThat(homePage.searchResults()).isGreaterThan(0);
     }
 }

@@ -26,6 +26,10 @@ public class HomePage {
         this.wait = wait;
     }
 
+    public void navigate() {
+        driver.get("https://www.mulesoft.com/");
+    }
+
     public void clickSearchButton() {
         driver.findElement(searchIconLocator).click();
     }

@@ -24,6 +24,7 @@ public class LoginPage {
         this.wait = wait;
     }
 
+
     public void setUsername(String username) {
         driver.findElement(usernameLocator).sendKeys(username);
     }
