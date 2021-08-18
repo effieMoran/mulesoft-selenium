@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.CommonsPage;
 import pages.LoginPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,12 +19,11 @@ public class LoginTest {
     @Before
     public void beforeTest() {
         WebDriver driver = new WebDriverHelper().generateWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 100);
+        loginPage = new LoginPage(driver,wait);
 
-        loginPage = new LoginPage(driver, wait);
-        CommonsPage commonsPage = new CommonsPage(driver, wait);
         loginPage.navigate();
-        commonsPage.acceptAllCookies();
+        loginPage.acceptAllCookies();
     }
 
     @Test

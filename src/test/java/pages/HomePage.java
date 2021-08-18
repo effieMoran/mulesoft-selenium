@@ -16,11 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class HomePage {
-
-    private WebDriver driver;
-
-    private WebDriverWait wait;
+public class HomePage extends BasePage{
 
     private By searchIconLocator = By.id("header-nav-search-form");
 
@@ -45,8 +41,7 @@ public class HomePage {
     private final static String HOME_PAGE_URL = "https://www.mulesoft.com/";
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
-        this.driver = driver;
-        this.wait = wait;
+        super(driver,wait);
     }
 
     public void navigate() {

@@ -5,11 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage {
-
-    private WebDriver driver;
-
-    private WebDriverWait wait;
+public class LoginPage extends BasePage {
 
     private By usernameLocator = By.cssSelector("input[data-test-id=SignIn-Username]");
 
@@ -22,8 +18,7 @@ public class LoginPage {
     private static final String ANYPOINT_LOGIN_URL = "https://anypoint.mulesoft.com/login/";
 
     public LoginPage(WebDriver driver, WebDriverWait wait) {
-        this.driver = driver;
-        this.wait = wait;
+        super(driver,wait);
     }
 
     public void navigate() {

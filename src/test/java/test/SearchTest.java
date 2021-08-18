@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.CommonsPage;
+import pages.BasePage;
 import pages.HomePage;
 
 import java.util.Set;
@@ -16,7 +16,7 @@ public class SearchTest {
 
     private HomePage homePage;
 
-    private CommonsPage commonsPage;
+    private BasePage basePage;
 
     private static final String API = "api";
 
@@ -28,9 +28,9 @@ public class SearchTest {
         WebDriverWait webDriverWait = new WebDriverWait(driver, 20);
 
         homePage = new HomePage(driver, webDriverWait);
-        commonsPage = new CommonsPage(driver, webDriverWait);
+        basePage = new BasePage(driver, webDriverWait);
         homePage.navigate();
-        commonsPage.acceptAllCookies();
+        basePage.acceptAllCookies();
     }
 
     @Test
@@ -38,11 +38,11 @@ public class SearchTest {
         homePage.clickSearchButton();
         homePage.searchValue(API);
 
-        commonsPage.takeScreenShot();
+        basePage.takeScreenShot();
 
         assertThat(homePage.searchResults()).isGreaterThan(0);
 
-        commonsPage.takeScreenShot();
+        basePage.takeScreenShot();
 
         Set<String> links = homePage.findAllLInks();
         for (String link : links) {
@@ -56,11 +56,11 @@ public class SearchTest {
         homePage.clickSearchButton();
         homePage.searchValue(TRIAL);
 
-        commonsPage.takeScreenShot();
+        basePage.takeScreenShot();
 
         assertThat(homePage.searchResults()).isGreaterThan(0);
 
-        commonsPage.takeScreenShot();
+        basePage.takeScreenShot();
 
         Set<String> links = homePage.findAllLInks();
         for (String link : links) {

@@ -3,13 +3,9 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DownloadPage {
+public class DownloadPage extends BasePage {
 
     private final static String DOWNLOAD_URL = "https://www.mulesoft.com/lp/dl/studio";
-
-    private WebDriver driver;
-
-    private WebDriverWait wait;
 
     private By operatingSystemLocator = By.id("operatingSystem");
 
@@ -30,8 +26,7 @@ public class DownloadPage {
     private By downloadButtonLocator = By.cssSelector("button[type=submit]");
 
     public DownloadPage(WebDriver driver, WebDriverWait wait) {
-        this.driver = driver;
-        this.wait = wait;
+        super(driver, wait);
     }
 
     public void navigate() {

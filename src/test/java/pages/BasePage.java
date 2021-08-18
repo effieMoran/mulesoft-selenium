@@ -9,17 +9,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CommonsPage {
+public class BasePage {
 
-    private WebDriver driver;
+    public WebDriver driver;
 
-    private WebDriverWait wait;
+    public  WebDriverWait wait;
 
     private By buttonId = By.id("onetrust-accept-btn-handler");
 
-    public CommonsPage(WebDriver driver, WebDriverWait wait) {
-        this.driver = driver;
-        this.wait = wait;
+    public BasePage(WebDriver driver, WebDriverWait wait) {
+       this.driver = driver;
+       this.wait = wait;
     }
 
     public void acceptAllCookies() {

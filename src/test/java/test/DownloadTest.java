@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.CommonsPage;
 import pages.DownloadPage;
 
 public class DownloadTest {
@@ -15,12 +14,11 @@ public class DownloadTest {
     @Before
     public void beforeTest() {
         WebDriver driver = new WebDriverHelper().generateWebDriver();
-        WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 100);
 
-        downloadPage = new DownloadPage(driver, webDriverWait);
-        CommonsPage commonsPage = new CommonsPage(driver, webDriverWait);
+        downloadPage = new DownloadPage(driver,webDriverWait);
         downloadPage.navigate();
-        commonsPage.acceptAllCookies();
+        downloadPage.acceptAllCookies();
     }
 
     @Test
@@ -32,10 +30,7 @@ public class DownloadTest {
         downloadPage.fillJobTitle("Developer");
         downloadPage.fillEmail("people123@aol.com");
         downloadPage.fillPhoneNumber("1123324554");
-
-        //TODO: Find out hot to click tha policy agreement
         downloadPage.clickPolicyAgreement();
-
         downloadPage.clickDownloadButton();
     }
 }
