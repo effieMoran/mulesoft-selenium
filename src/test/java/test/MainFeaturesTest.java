@@ -41,7 +41,7 @@ public class MainFeaturesTest {
 
         assertThat(homePage.getCopyright())
                 .isNotEmpty()
-                .contains("©2021")
+                .contains("2021")
                 .contains("MuleSoft LLC, a Salesforce company");
     }
 }
