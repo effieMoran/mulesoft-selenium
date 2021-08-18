@@ -1,6 +1,7 @@
 package test;
 
-import automation.WebDriverHelper;
+import org.junit.After;
+import util.WebDriverHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -32,5 +33,10 @@ public class DownloadTest {
         downloadPage.fillPhoneNumber("1123324554");
         downloadPage.clickPolicyAgreement();
         downloadPage.clickDownloadButton();
+    }
+
+    @After
+    public void afterTest() {
+        downloadPage.quit();
     }
 }

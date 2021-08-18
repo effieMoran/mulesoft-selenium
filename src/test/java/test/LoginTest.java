@@ -1,6 +1,6 @@
 package test;
 
-import automation.WebDriverHelper;
+import util.WebDriverHelper;
 import config.ConfigurationValues;
 import org.junit.Before;
 import org.junit.Test;

@@ -27,6 +27,10 @@ public class BasePage {
         driver.findElement(buttonId).click();
     }
 
+    public void quit() {
+        driver.quit();
+    }
+
     @Attachment
     @Step("Make screen shot of results page")
     public byte[] takeScreenShot() {

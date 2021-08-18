@@ -1,6 +1,7 @@
 package test;
 
-import automation.WebDriverHelper;
+import org.junit.After;
+import util.WebDriverHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -36,5 +37,9 @@ public class MainFeaturesTest {
                 .isNotEmpty()
                 .contains("2021")
                 .contains("MuleSoft LLC, a Salesforce company");
+    }
+    @After
+    public void afterTest() {
+        homePage.quit();
     }
 }

@@ -84,7 +84,7 @@ public class HomePage extends BasePage{
         return allLinks;
     }
 
-    public int verifyLink(String linkUrl)
+    public int getResponseStatusCode(String linkUrl)
     {
         try
         {
