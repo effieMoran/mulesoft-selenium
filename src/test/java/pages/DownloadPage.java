@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DownloadPage {
@@ -74,6 +75,7 @@ public class DownloadPage {
     }
 
     public void clickPolicyAgreement() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(licenceAgreementLocator));
         WebElement policyAgreement = driver.findElement(licenceAgreementLocator);
         policyAgreement.click();
     }

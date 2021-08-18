@@ -6,6 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class HomePage {
 
@@ -22,6 +31,16 @@ public class HomePage {
     private By searchResultLocator = By.cssSelector("div.sresult");
 
     private By searchResultsPaginatedLocator = By.tagName("div");
+
+    private By footerCopyrightLocator = By.cssSelector("p[class=footer-copyright]");
+
+    private By linkLocator = By.tagName("a");
+
+    private static Logger logger = LoggerFactory.getLogger(HomePage.class);
+
+    private static final String HREF = "href";
+
+    private static final int CONNECTION_TIMEOUT = 10000;
 
     private final static String HOME_PAGE_URL = "https://www.mulesoft.com/";
 
@@ -50,5 +69,38 @@ public class HomePage {
 
         wait.until(ExpectedConditions.presenceOfElementLocated(searchResultLocator));
         return searchResults.findElements(searchResultsPaginatedLocator).size();
+    }
+
+    public String getCopyright() {
+        return driver.findElement(footerCopyrightLocator).getText();
+    }
+
+
+    public Set<String> findAllLInks() {
+        WebElement searchTable = driver.findElement(searchResultsTableLocator);
+        List<WebElement> links = searchTable.findElements(linkLocator);
+        Set<String> allLinks = new HashSet<>();
+        for(WebElement link: links) {
+            String url = link.getAttribute(HREF);
+            if (null != url && !url.isEmpty()) {
+                allLinks.add(url);
+            }
+        }
+        return allLinks;
+    }
+
+    public int verifyLink(String linkUrl)
+    {
+        try
+        {
+            URL url = new URL(linkUrl);
+            HttpURLConnection httpURLConnect=(HttpURLConnection)url.openConnection();
+            httpURLConnect.setConnectTimeout(CONNECTION_TIMEOUT);
+            httpURLConnect.connect();
+            return httpURLConnect.getResponseCode();
+        } catch (IOException e) {
+            logger.debug("An unexpected error happened during the request to : " + linkUrl);
+            return 0;
+        }
     }
 }

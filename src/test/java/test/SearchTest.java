@@ -8,11 +8,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CommonsPage;
 import pages.HomePage;
 
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchTest {
 
     private HomePage homePage;
+
+    private CommonsPage commonsPage;
 
     private static final String API = "api";
 
@@ -21,10 +25,10 @@ public class SearchTest {
     @Before
     public void beforeTest() {
         WebDriver driver = new WebDriverHelper().generateWebDriver();
-        WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 20);
 
         homePage = new HomePage(driver, webDriverWait);
-        CommonsPage commonsPage = new CommonsPage(driver, webDriverWait);
+        commonsPage = new CommonsPage(driver, webDriverWait);
         homePage.navigate();
         commonsPage.acceptAllCookies();
     }
@@ -34,6 +38,11 @@ public class SearchTest {
         homePage.clickSearchButton();
         homePage.searchValue(API);
         assertThat(homePage.searchResults()).isGreaterThan(0);
+        Set<String> links = homePage.findAllLInks();
+        for (String link: links) {
+            assertThat(homePage.verifyLink(link))
+                    .isLessThan(400);
+        }
     }
 
     @Test
@@ -41,5 +50,10 @@ public class SearchTest {
         homePage.clickSearchButton();
         homePage.searchValue(TRIAL);
         assertThat(homePage.searchResults()).isGreaterThan(0);
+        Set<String> links = homePage.findAllLInks();
+        for (String link: links) {
+            assertThat(homePage.verifyLink(link))
+                    .isLessThan(400);
+        }
     }
 }
