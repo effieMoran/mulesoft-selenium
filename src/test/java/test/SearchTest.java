@@ -37,9 +37,15 @@ public class SearchTest {
     public void searchApiTest() {
         homePage.clickSearchButton();
         homePage.searchValue(API);
+
+        commonsPage.takeScreenShot();
+
         assertThat(homePage.searchResults()).isGreaterThan(0);
+
+        commonsPage.takeScreenShot();
+
         Set<String> links = homePage.findAllLInks();
-        for (String link: links) {
+        for (String link : links) {
             assertThat(homePage.verifyLink(link))
                     .isLessThan(400);
         }
@@ -49,9 +55,15 @@ public class SearchTest {
     public void searchTrialTest() {
         homePage.clickSearchButton();
         homePage.searchValue(TRIAL);
+
+        commonsPage.takeScreenShot();
+
         assertThat(homePage.searchResults()).isGreaterThan(0);
+
+        commonsPage.takeScreenShot();
+
         Set<String> links = homePage.findAllLInks();
-        for (String link: links) {
+        for (String link : links) {
             assertThat(homePage.verifyLink(link))
                     .isLessThan(400);
         }

@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DownloadPage {
@@ -26,7 +25,7 @@ public class DownloadPage {
 
     private By phoneNumberLocator = By.id("Phone");
 
-    private By licenceAgreementLocator = By.id("Beta_License_Agreement__c");
+    private static final String POLICY_AGREEMENT_SCRIPT = "document.querySelector('#LblBeta_License_Agreement__c').click()";
 
     private By downloadButtonLocator = By.cssSelector("button[type=submit]");
 
@@ -75,9 +74,8 @@ public class DownloadPage {
     }
 
     public void clickPolicyAgreement() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(licenceAgreementLocator));
-        WebElement policyAgreement = driver.findElement(licenceAgreementLocator);
-        policyAgreement.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(POLICY_AGREEMENT_SCRIPT);
     }
 
     public void clickDownloadButton() {

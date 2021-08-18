@@ -34,7 +34,7 @@ public class DownloadTest {
         downloadPage.fillPhoneNumber("1123324554");
 
         //TODO: Find out hot to click tha policy agreement
-        //downloadPage.clickPolicyAgreement();
+        downloadPage.clickPolicyAgreement();
 
         downloadPage.clickDownloadButton();
     }
