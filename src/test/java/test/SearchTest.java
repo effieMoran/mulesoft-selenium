@@ -66,6 +66,7 @@ public class SearchTest {
         }
     }
 
+
     @After
     public void afterTest() {
         homePage.quit();
