@@ -1,9 +1,9 @@
 package test;
 
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import util.WebDriverHelper;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.DownloadPage;
@@ -12,7 +12,7 @@ public class DownloadTest {
 
     private DownloadPage downloadPage;
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         WebDriver driver = new WebDriverHelper().generateWebDriver();
         WebDriverWait webDriverWait = new WebDriverWait(driver, 100);
@@ -35,7 +35,7 @@ public class DownloadTest {
         downloadPage.clickDownloadButton();
     }
 
-    @After
+    @AfterEach
     public void afterTest() {
         downloadPage.quit();
     }

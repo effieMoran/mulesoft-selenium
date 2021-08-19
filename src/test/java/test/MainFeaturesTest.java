@@ -1,12 +1,12 @@
 package test;
 
-import org.junit.After;
-import util.WebDriverHelper;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
+import util.WebDriverHelper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +14,7 @@ public class MainFeaturesTest {
 
     private HomePage homePage;
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         WebDriver driver = new WebDriverHelper().generateWebDriver();
         WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
@@ -38,7 +38,8 @@ public class MainFeaturesTest {
                 .contains("2021")
                 .contains("MuleSoft LLC, a Salesforce company");
     }
-    @After
+
+    @AfterEach
     public void afterTest() {
         homePage.quit();
     }

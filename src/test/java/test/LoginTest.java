@@ -2,17 +2,22 @@ package test;
 
 import config.ServiceConfig;
 import config.YamlConfig;
-import util.WebDriverHelper;
-import org.junit.Before;
-import org.junit.Test;
+import io.qameta.allure.Description;
+
+import io.qameta.allure.Epic;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.LoginPage;
+import util.WebDriverHelper;
 
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Epic("make a report")
 public class LoginTest {
 
     private LoginPage loginPage;
@@ -23,7 +28,7 @@ public class LoginTest {
 
     private static final String AUTOMATION = "automation";
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         WebDriver driver = new WebDriverHelper().generateWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, 100);
@@ -36,6 +41,7 @@ public class LoginTest {
     }
 
     @Test
+    @Description("Try to login with a previously registered user.")
     public void login() {
 
         loginPage.setUsername(properties.getUsername());
@@ -43,5 +49,10 @@ public class LoginTest {
         loginPage.clickSubmitButton();
 
         assertThat(loginPage.getTitleText()).isEqualTo(ANYPOINT_PLATFORM);
+    }
+
+    @AfterEach
+    public void quit() {
+        loginPage.quit();
     }
 }

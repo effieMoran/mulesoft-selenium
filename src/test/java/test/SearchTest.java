@@ -1,9 +1,9 @@
 package test;
 
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import util.WebDriverHelper;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
@@ -20,7 +20,7 @@ public class SearchTest {
 
     private static final String TRIAL = "trial";
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         WebDriver driver = new WebDriverHelper().generateWebDriver();
         WebDriverWait webDriverWait = new WebDriverWait(driver, 20);
@@ -66,8 +66,7 @@ public class SearchTest {
         }
     }
 
-
-    @After
+    @AfterEach
     public void afterTest() {
         homePage.quit();
     }
