@@ -10,8 +10,17 @@
 - [x] Product download.
 - [x] Report.
 
-# Excecute
+# Execute 
 
-To run the tests ´mvn test´
+- To run the tests `mvn test`
 
-To generate the report ´mvn allure:report´
+- To generate the report `mvn allure:report`
+
+- To set custom properties
+
+```yaml
+application:
+  automation:
+    username: myUsername
+    password: myPassword
+```
