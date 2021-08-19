@@ -48,8 +48,8 @@ public class DownloadTest {
                 .contains("Thank you for downloading Anypoint Studio and Mule");
     }
 
-//    @AfterEach
-//    public void afterTest() {
-//        downloadPage.quit();
-//    }
+    @AfterEach
+    public void afterTest() {
+        downloadPage.quit();
+    }
 }
