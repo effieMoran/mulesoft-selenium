@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class HomePage extends BasePage{
 
@@ -30,6 +31,8 @@ public class HomePage extends BasePage{
     private By searchResultsPaginatedLocator = By.tagName("div");
 
     private By footerCopyrightLocator = By.cssSelector("p[class=footer-copyright]");
+
+    private By socialMediaLocator = By.cssSelector(".footer-inside .social-logos");
 
     private By linkLocator = By.tagName("a");
 
@@ -99,5 +102,13 @@ public class HomePage extends BasePage{
             logger.debug("An unexpected error happened during the request to : " + linkUrl);
             return 0;
         }
+    }
+
+    public List<String> getSocialMediaLinks() {
+        WebElement socialLogos = driver.findElement(socialMediaLocator);
+        List<WebElement> socialMediaLogos = socialLogos.findElements(linkLocator);
+        return socialMediaLogos.stream()
+                .map(s -> s.getAttribute(HREF))
+                .collect(Collectors.toList());
     }
 }
