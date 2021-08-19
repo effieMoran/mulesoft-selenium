@@ -1,5 +1,9 @@
 package test;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,8 +14,11 @@ import pages.HomePage;
 
 import java.util.Set;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Epic("Coding Exercise")
+@Feature("Search-bar")
 public class SearchTest {
 
     private HomePage homePage;
@@ -26,16 +33,17 @@ public class SearchTest {
         WebDriverWait webDriverWait = new WebDriverWait(driver, 20);
 
         homePage = new HomePage(driver, webDriverWait);
-        homePage.navigate();
-        homePage.acceptAllCookies();
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
     public void searchApiTest() {
+
+        homePage.navigate();
+        homePage.acceptAllCookies();
+        homePage.takeScreenShot();
         homePage.clickSearchButton();
         homePage.searchValue(API);
-
-        homePage.takeScreenShot();
 
         assertThat(homePage.searchResults()).isGreaterThan(0);
 
@@ -49,7 +57,13 @@ public class SearchTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
     public void searchTrialTest() {
+
+        homePage.navigate();
+        homePage.acceptAllCookies();
+        homePage.takeScreenShot();
+
         homePage.clickSearchButton();
         homePage.searchValue(TRIAL);
 

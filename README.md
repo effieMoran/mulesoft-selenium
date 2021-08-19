@@ -16,7 +16,7 @@
 
 - To generate the report `mvn allure:report`
 
-- To set custom properties
+- To set custom properties create a file under `src/test/resources/` called `application.yml`
 
 ```yaml
 application:

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -52,6 +53,7 @@ public class HomePage extends BasePage{
         driver.findElement(searchIconLocator).click();
     }
 
+    @Step("Search by \'{0}\'")
     public void searchValue(String searchInput) {
         WebElement searchBar = driver.findElement(searchInputLocator);
         searchBar.sendKeys(searchInput);
