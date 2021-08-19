@@ -28,9 +28,11 @@ application:
     password: myPassword
 ```
 
-# Nice to have
+## Nice to have
+
 
 This features were not implemented due to the lack of time:
+
 
 - Handle timeouts through configuration.
 - Handle URLs/URIs through configuration.
