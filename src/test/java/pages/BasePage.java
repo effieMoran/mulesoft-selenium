@@ -32,7 +32,7 @@ public class BasePage {
     }
 
     @Attachment
-    @Step("Make screen shot of results page")
+    @Step("Take screenshot")
     public byte[] takeScreenShot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }

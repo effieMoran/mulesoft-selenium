@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,14 +22,17 @@ public class LoginPage extends BasePage {
         super(driver,wait);
     }
 
+    @Step("Navigate to Anypoint Platform Sign in page")
     public void navigate() {
         driver.get(ANYPOINT_LOGIN_URL);
     }
 
+    @Step("Enter username {0}")
     public void setUsername(String username) {
         driver.findElement(usernameLocator).sendKeys(username);
     }
 
+    @Step("Enter password {0}")
     public void setPassword(String password) {
         driver.findElement(passwordLocator).sendKeys(password);
     }

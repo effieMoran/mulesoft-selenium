@@ -2,9 +2,8 @@ package test;
 
 import config.ServiceConfig;
 import config.YamlConfig;
-import io.qameta.allure.Description;
+import io.qameta.allure.*;
 
-import io.qameta.allure.Epic;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,8 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Epic("make a report")
+@Epic("Coding Exercise")
+@Feature("Login")
 public class LoginTest {
 
     private LoginPage loginPage;
@@ -33,22 +33,30 @@ public class LoginTest {
         WebDriver driver = new WebDriverHelper().generateWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, 100);
         loginPage = new LoginPage(driver,wait);
-        loginPage.navigate();
-        loginPage.acceptAllCookies();
 
-        Map<String, ServiceConfig> s = YamlConfig.init();
-        properties = s.get(AUTOMATION);
+        Map<String, ServiceConfig> configuration = YamlConfig.init();
+        properties = configuration.get(AUTOMATION);
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @Description("Try to login with a previously registered user.")
     public void login() {
 
+        loginPage.navigate();
+        loginPage.acceptAllCookies();
+        loginPage.takeScreenShot();
+
         loginPage.setUsername(properties.getUsername());
+        loginPage.takeScreenShot();
+
         loginPage.setPassword(properties.getPassword());
+        loginPage.takeScreenShot();
+
         loginPage.clickSubmitButton();
 
         assertThat(loginPage.getTitleText()).isEqualTo(ANYPOINT_PLATFORM);
+        loginPage.takeScreenShot();
     }
 
     @AfterEach
