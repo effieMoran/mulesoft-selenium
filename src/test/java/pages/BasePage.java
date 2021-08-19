@@ -11,9 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
-    public WebDriver driver;
+    protected WebDriver driver;
 
-    public  WebDriverWait wait;
+    protected WebDriverWait wait;
 
     private By buttonId = By.id("onetrust-accept-btn-handler");
 

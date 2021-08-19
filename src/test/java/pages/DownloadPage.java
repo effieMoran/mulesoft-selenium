@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DownloadPage extends BasePage {
@@ -21,9 +22,13 @@ public class DownloadPage extends BasePage {
 
     private By phoneNumberLocator = By.id("Phone");
 
+    private By downloadButtonLocator = By.cssSelector("button[type=submit]");
+
+    private By congratulationsLocator = By.cssSelector(".block-mule-foundation-content");
+
     private static final String POLICY_AGREEMENT_SCRIPT = "document.querySelector('#LblBeta_License_Agreement__c').click()";
 
-    private By downloadButtonLocator = By.cssSelector("button[type=submit]");
+    private static final String DOWNLOAD = "download";
 
     public DownloadPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -75,5 +80,10 @@ public class DownloadPage extends BasePage {
 
     public void clickDownloadButton() {
         driver.findElement(downloadButtonLocator).click();
+    }
+
+    public String getCongratulationsText() {
+        wait.until(ExpectedConditions.urlContains(DOWNLOAD));
+        return driver.findElement(congratulationsLocator).getText();
     }
 }

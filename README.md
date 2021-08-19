@@ -24,3 +24,6 @@ application:
     username: myUsername
     password: myPassword
 ```
+
+# Nice to have
+
